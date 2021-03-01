@@ -23,7 +23,6 @@ async def list_cmd(msg: types.Message, state: FSMContext):
     user_data = await state.get_data()
     connection = Connection()
     if time.time() - user_data.get('last_request', 0.0) < 600:
-        await bot.send_message(msg.chat.id, 'Ты уже спрашивал меня недавно')
         lst = await exchangeratesapi.get_values_fjson(connection.get_all())
     else:
         try:
@@ -48,7 +47,6 @@ async def exchange(msg: types.Message, state: FSMContext):
     count, currency = re
     connection = Connection()
     if time.time() - user_data.get('last_request', 0.0) < 600:
-        await bot.send_message(msg.chat.id, 'Ты уже спрашивал меня недавно')
         course = connection.get(currency)[0]
     else:
         json = await exchangeratesapi.request('https://api.exchangeratesapi.io/latest?base=USD')
