@@ -3,6 +3,13 @@ import os
 
 
 async def plot(x, y, currency):
+    """
+    create image graph and return path for file
+    :param x: list
+    :param y: list
+    :param currency: str
+    :return: str
+    """
     await checkdir('filedir')
     path = f'filedir/{currency}-{x[0]}.png'
     plt.grid()
@@ -19,5 +26,8 @@ async def plot(x, y, currency):
 
 
 async def checkdir(dir):
+    """
+    check directory and create if not exists
+    """
     if not os.path.exists(dir):
         os.makedirs(dir)
