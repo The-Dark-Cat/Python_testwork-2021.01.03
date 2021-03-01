@@ -18,7 +18,7 @@ async def plot(x, y, currency):
     plt.tick_params(
         labelrotation=45
     )
-    plt.autoscale()
+    
     plt.plot(x, y)
     plt.savefig(fname=path)
     # plt.show()
